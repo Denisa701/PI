@@ -1,0 +1,256 @@
+>> help grid
+ grid   Grid lines.
+    grid ON adds major grid lines to the current axes.
+    grid OFF removes major and minor grid lines from the current axes. 
+    grid MINOR toggles the minor grid lines of the current axes.
+    grid, by itself, toggles the major grid lines of the current axes.
+    grid(AX,...) uses axes AX instead of the current axes.
+ 
+    grid sets the XGrid, YGrid, and ZGrid properties of
+    the current axes. If the axes is a polar axes then grid sets
+    the ThetaGrid and RGrid properties. If the axes is a geoaxes, then grid
+    sets the Grid property.
+ 
+    AX.XMinorGrid = 'on' turns on the minor grid.
+ 
+    See also title, xlabel, ylabel, zlabel, axes, plot, box, polaraxes.
+
+    Documentation for grid
+
+>> help figure
+ figure Create figure window.
+    figure, by itself, creates a new figure window, and returns
+    its handle.
+  
+    figure(H) makes H the current figure, forces it to become visible,
+    and raises it above all other figures on the screen.  If Figure H
+    does not exist, and H is an integer, a new figure is created with
+    handle H.
+ 
+    GCF returns the handle to the current figure.
+ 
+    Execute GET(H) to see a list of figure properties and
+    their current values. Execute SET(H) to see a list of figure
+    properties and their possible values.
+ 
+    See also subplot, axes, gcf, clf.
+
+    Documentation for figure
+
+>> help hold
+ hold   Hold current graph
+    hold ON holds the current plot and all axis properties, including 
+    the current color and linestyle, so that subsequent graphing commands
+    add to the existing graph without resetting the color and linestyle.
+    hold OFF returns to the default mode whereby PLOT commands erase 
+    the previous plots and reset all axis properties before drawing 
+    new plots.
+    hold, by itself, toggles the hold state.
+    hold does not affect axis autoranging properties.
+ 
+    hold ALL is the same as hold ON. This syntax will be removed in 
+    a future release. Use hold ON instead.
+ 
+    hold(AX,...) applies the command to the Axes object AX.
+ 
+    Algorithm note:
+    hold ON sets the NextPlot property of the current figure and
+    axes to "add".
+    hold OFF sets the NextPlot property of the current axes to
+    "replace".
+ 
+    See also ishold, newplot, figure, axes.
+
+    Documentation for hold
+
+>> >> help which
+ which  Locate functions and files.
+    which ITEM displays the full path for ITEM. ITEM can include a partial
+    path, complete path, relative path, or no path. ITEM must be on the 
+    search path or in the current folder.
+  
+    If ITEM is a Simulink model, a MATLAB app file, or a MATLAB function or 
+    script in a MATLAB code file, then which displays the full path for the 
+    corresponding file.
+  
+    If ITEM is a method in a loaded Java class, then which displays the
+    package, class, and method name for that method.
+  
+    If ITEM is a workspace variable, then which displays a message
+    identifying ITEM as a variable.
+    
+    If ITEM is a file name with a specified extension, then which displays 
+    the full path of ITEM.
+ 
+    If ITEM is an overloaded function or method, then which ITEM returns
+    only the path of the first function or method found.
+  
+    which FUN1 in FUN2 displays the path to function FUN1 that is called by
+    file FUN2. Use this syntax to determine whether a local function is
+    being called instead of a function on the path. This syntax does not
+    locate nested functions.
+  
+    which ___ -ALL displays the paths to all items on the MATLAB path with
+    the requested name. Such items include methods of instantiated classes.
+    You can use -ALL with the input arguments of any of the previous
+    syntaxes.
+  
+    S = which(ITEM) returns the full path for ITEM in the character vector, S.
+  
+    S = which(FUN1,'IN',FUN2) returns the path to function FUN1 that is
+    called by file FUN2. Use this syntax to determine whether a local
+    function is being called instead of a function on the path. This syntax
+    does not locate nested functions.
+  
+    S = which(___,'-ALL') returns the results of which in the character vector or
+    cell array of character vectors, S. You can use this syntax with any of the input
+    arguments in the previous syntax group. Each row of cell array S
+    identifies a function. The functions are in order of precedence, unless
+    they are shadowed. Among shadowed functions, you should not rely on the
+    order of the functions in S.
+   
+    For more information about function precedence order, see the MATLAB
+    documentation.
+  
+    See also dir, help, who, what, exist, lookfor, fileparts, mfilename,
+    path, type
+
+    Documentation for which
+
+>> help pause
+ pause Wait for user response.
+    pause(n) pauses for n seconds before continuing, where n can also be a
+    fraction. The resolution of the clock is platform specific. Fractional
+    pauses of 0.01 seconds should be supported on most platforms.
+ 
+    pause causes a procedure to stop and wait for the user to strike any
+    key before continuing.
+ 
+    pause OFF indicates that any subsequent pause or pause(n) commands
+    should not actually pause. This allows normally interactive scripts to
+    run unattended.
+ 
+    pause ON indicates that subsequent pause commands should pause.
+ 
+    pause QUERY returns the current state of pause, either 'on' or 'off'.
+ 
+    STATE = pause(...) returns the state of pause previous to processing
+    the input arguments.
+ 
+    The accuracy of pause is subject to the scheduling resolution of the
+    operating system you are using and also to other system activity. It
+    cannot be guaranteed with 100% confidence, but only with some expected
+    error. For example, experiments have shown that choosing N with a
+    resolution of .1 (such as N = 1.7) leads to actual pause values that
+    are correct to roughly 10% in the relative error of the fractional
+    part. Asking for finer resolutions (such as .01) shows higher relative
+    error.
+ 
+    Examples:
+        % Pause for 5 seconds
+        pause(5)
+ 
+        % Temporarily disable pause
+        pause off
+        pause(5) % Note that this does not pause
+        pause on
+ 
+        % Alternatively, disable/restore the state
+        pstate = pause('off')
+        pause(5) % Note that this does not pause
+        pause(pstate);
+ 
+    See also keyboard, input.
+
+    Documentation for pause
+
+>> help disp
+ disp Display array.
+    disp(X) displays array X without printing the array name or 
+    additional description information such as the size and class name.
+    In all other ways it is the same as leaving the semicolon off an
+    expression except that nothing is shown for empty arrays.
+ 
+    If X is a string or character array, the text is displayed.
+ 
+    See also formattedDisplayText, sprintf, num2str, format, details.
+
+    Documentation for disp
+    Other functions named disp
+
+>>  plot   Linear plot. 
+    plot(X,Y) plots vector Y versus vector X. If X or Y is a matrix,
+    then the vector is plotted versus the rows or columns of the matrix,
+    whichever line up.  If X is a scalar and Y is a vector, disconnected
+    line objects are created and plotted as discrete points vertically at
+    X.
+ 
+    plot(Y) plots the columns of Y versus their index.
+    If Y is complex, plot(Y) is equivalent to plot(real(Y),imag(Y)).
+    In all other uses of plot, the imaginary part is ignored.
+ 
+    Various line types, plot symbols and colors may be obtained with
+    plot(X,Y,S) where S is a character string made from one element
+    from any or all the following 3 columns:
+ 
+           b     blue          .     point              -     solid
+           g     green         o     circle             :     dotted
+           r     red           x     x-mark             -.    dashdot 
+           c     cyan          +     plus               --    dashed   
+           m     magenta       *     star             (none)  no line
+           y     yellow        s     square
+           k     black         d     diamond
+           w     white         v     triangle (down)
+                               ^     triangle (up)
+                               <     triangle (left)
+                               >     triangle (right)
+                               p     pentagram
+                               h     hexagram
+                          
+    For example, plot(X,Y,'c+:') plots a cyan dotted line with a plus 
+    at each data point; plot(X,Y,'bd') plots blue diamond at each data 
+    point but does not draw any line.
+ 
+    plot(X1,Y1,S1,X2,Y2,S2,X3,Y3,S3,...) combines the plots defined by
+    the (X,Y,S) triples, where the X's and Y's are vectors or matrices 
+    and the S's are strings.  
+ 
+    For example, plot(X,Y,'y-',X,Y,'go') plots the data twice, with a
+    solid yellow line interpolating green circles at the data points.
+ 
+    The plot command, if no color is specified, makes automatic use of
+    the colors specified by the axes ColorOrder property.  By default,
+    plot cycles through the colors in the ColorOrder property.  For
+    monochrome systems, plot cycles over the axes LineStyleOrder property.
+ 
+    Note that RGB colors in the ColorOrder property may differ from
+    similarly-named colors in the (X,Y,S) triples.  For example, the 
+    second axes ColorOrder property is medium green with RGB [0 .5 0],
+    while plot(X,Y,'g') plots a green line with RGB [0 1 0].
+ 
+    If you do not specify a marker type, plot uses no marker. 
+    If you do not specify a line style, plot uses a solid line.
+ 
+    plot(AX,...) plots into the axes with handle AX.
+ 
+    plot returns a column vector of handles to lineseries objects, one
+    handle per plotted line. 
+ 
+    The X,Y pairs, or X,Y,S triples, can be followed by 
+    parameter/value pairs to specify additional properties 
+    of the lines. For example, plot(X,Y,'LineWidth',2,'Color',[.6 0 0]) 
+    will create a plot with a dark red line width of 2 points.
+ 
+    Example
+       x = -pi:pi/10:pi;
+       y = tan(sin(x)) - sin(tan(x));
+       plot(x,y,'--rs','LineWidth',2,...
+                       'MarkerEdgeColor','k',...
+                       'MarkerFaceColor','g',...
+                       'MarkerSize',10)
+ 
+    See also plottools, semilogx, semilogy, loglog, plotyy, plot3, grid,
+    title, xlabel, ylabel, axis, axes, hold, legend, subplot, scatter.
+
+    Documentation for plot
+    Other functions named plot
